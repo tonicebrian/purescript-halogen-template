@@ -8,7 +8,7 @@
   "scripts": {
     "build": "spago build",
     "test": "spago test",
-    "serve": "parcel dev/index.html --open",
+    "serve": "mkdir -p dist && cp dev/index.html dist/ && spago build --then \"esbuild --bundle dev/index.js --outfile=dist/index.js --servedir=dist\"",
     "build-prod": "mkdir -p prod && cp dev/index.html prod/ && rm -rf dist && spago bundle-app --to prod/index.js && parcel build prod/index.html"
   }
 }
